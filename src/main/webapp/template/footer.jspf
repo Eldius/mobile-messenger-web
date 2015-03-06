@@ -1,0 +1,18 @@
+<!-- footer -->
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="<c:url value="/static/js/jquery-2.1.1.min.js" />"></script>
+	<script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
+	<script src="<c:url value="/static/js/bootstrap-dialog.min.js" />"></script>
+
+	<script src="<c:url value="/static/js/general.js" />"></script>
+
+	<script>
+		$(document).ready(function(){
+			init();
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+
+	<Set name="serverClasses">
+		<Array type="java.lang.String">
+			<Item>org.eclipse.jetty.servlet.ServletContextHandler.Decorator</Item>
+		</Array>
+	</Set>
+	<New id="BeanManager" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>
+			<Ref id="webAppCtx" />
+		</Arg>
+		<Arg>BeanManager</Arg>
+		<Arg>
+			<New class="javax.naming.Reference">
+				<Arg>javax.enterprise.inject.spi.BeanManager</Arg>
+				<Arg>org.jboss.weld.resources.ManagerObjectFactory</Arg>
+				<Arg />
+			</New>
+		</Arg>
+	</New>
+    <New id="BeanManager" class="org.eclipse.jetty.plus.jndi.Resource">
+        <Arg>jdbc/datasource</Arg>
+        <Arg>
+            <New class="org.h2.jdbcx.JdbcDataSource">
+                <Set name="URL">jdbc:h2:./test</Set>
+                <Set name="user">user</Set>
+                <Set name="password">pass</Set>
+            </New>
+        </Arg>
+    </New>
+</Configure>
