@@ -20,6 +20,8 @@ public class UserInfo {
     private String password;
     private String email;
 
+    private UserType userType;
+
     @Lob
     private String registrationId;
 
@@ -76,6 +78,14 @@ public class UserInfo {
 
     public void setMobileDeviceKey(String mobileDeviceKey) {
         this.mobileDeviceKey = mobileDeviceKey;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     @Override
