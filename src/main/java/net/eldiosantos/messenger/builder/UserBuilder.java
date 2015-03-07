@@ -13,23 +13,29 @@ public class UserBuilder {
     @Inject
     private HashProvider provider;
 
-    private final UserInfo user;
+    private UserInfo user;
 
     public UserBuilder() {
         user = new UserInfo();
     }
 
-    public UserBuilder setLogin(String login) {
+    public UserBuilder start() {
+        user = new UserInfo();
+        return this;
+    }
+
+    public UserBuilder login(String login) {
         user.setLogin(login);
         return this;
     }
 
-    public UserBuilder setPassword(String password) {
+    public UserBuilder password(String password) {
         user.setPassword(provider.hash(password));
         return this;
     }
 
     public UserInfo build() {
-        return user;
+        final UserInfo tmpUser = user;
+        return tmpUser;
     }
 }

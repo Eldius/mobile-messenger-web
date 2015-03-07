@@ -34,8 +34,8 @@ public class UserAuthenticator {
 
         /*
         final UserInfo userInfo = builder
-                .setLogin(login)
-                .setPassword(password)
+                .login(login)
+                .password(password)
                 .build();
         */
 
