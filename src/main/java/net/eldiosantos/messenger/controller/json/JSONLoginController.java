@@ -1,4 +1,4 @@
-package net.eldiosantos.messenger.controller;
+package net.eldiosantos.messenger.controller.json;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
