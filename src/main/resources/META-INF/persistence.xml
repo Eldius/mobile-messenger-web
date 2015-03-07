@@ -9,8 +9,8 @@
         <non-jta-data-source>jdbc/datasource</non-jta-data-source>
 
 		<!-- entidade mapeada -->
-        <class>net.eldiosantos.viajabessa.model.Message</class>
-        <class>net.eldiosantos.viajabessa.model.auth.UserInfo</class>
+        <class>net.eldiosantos.messenger.model.Message</class>
+        <class>net.eldiosantos.messenger.model.auth.UserInfo</class>
 
         <!-- provedor/implementacao do JPA -->
         <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
