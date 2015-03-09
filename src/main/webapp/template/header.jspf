@@ -48,7 +48,7 @@
 					<c:if test="${empty userSession.login}">
 					    <li class="login"><a href="${linkTo[LoginController].form() }"><fmt:message key="app.menu.login" /></a></li>
 					</c:if>
-					<c:if test="${not empty userSession.login}">
+					<c:if test="${not empty userSession.login && rules[AdminUserRule].isAllowed(0)}">
                     	<li class="admin"><a href="${linkTo[AdminController].index() }"><fmt:message key="app.menu.admin" /></a></li>
                     </c:if>
 				</ul>
