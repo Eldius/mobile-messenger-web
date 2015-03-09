@@ -12,14 +12,15 @@
 	</context-param>
 
     <listener>
-        <listener-class>net.eldiosantos.messenger.listener.UserdatabaseValidationListener</listener-class>
-    </listener>
-
-    <listener>
         <listener-class>org.jboss.weld.environment.servlet.BeanManagerResourceBindingListener</listener-class>
     </listener>
     <listener>
         <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>net.eldiosantos.messenger.listener.UserdatabaseValidationListener</listener-class>
+        <display-name>User database validation listener</display-name>
     </listener>
 
     <jsp-config>

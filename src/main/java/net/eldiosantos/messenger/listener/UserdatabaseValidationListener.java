@@ -21,6 +21,7 @@ public class UserdatabaseValidationListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        new Thread(new ValidatorExecutor()).start();
     }
 
     @Override
@@ -48,7 +49,7 @@ public class UserdatabaseValidationListener implements ServletContextListener {
                 } catch (Exception e) {
                     logger.warn("Error trying to validate main user... Waiting to try again...", e);
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(5000);
                     } catch (InterruptedException e1) {
                         logger.warn("Error while waiting to try again", e1);
                     }
@@ -67,18 +68,21 @@ public class UserdatabaseValidationListener implements ServletContextListener {
 
         private void createMainUser() throws NamingException, SQLException {
             final PreparedStatement st = getConnextion().prepareStatement(ScriptConstants.INSERT_USER.getScript());
-        /*
-            EMAIL
-            , LOGIN
-            , MOBILEDEVICEKEY
-            , PASSWORD
-            , REGISTRATIONID
-         */
+
+            /*
+                EMAIL
+                , LOGIN
+                , MOBILEDEVICEKEY
+                , PASSWORD
+                , REGISTRATIONID
+             */
+
             st.setString(1, "admin@mailinator.com");
             st.setString(2, "admin");
             st.setNull(3, Types.LONGVARCHAR);
             st.setString(4, new SHAHashProvider().hash("123"));
             st.setNull(5, Types.LONGVARCHAR);
+            st.setInt(6, 0);
 
             st.execute();
             getConnextion().commit();

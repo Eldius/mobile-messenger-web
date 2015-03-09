@@ -1,4 +1,6 @@
 select
   count(1) as qtd
 from
-  USERINFO
+  USERINFO u
+where
+    u.USERTYPE = 0

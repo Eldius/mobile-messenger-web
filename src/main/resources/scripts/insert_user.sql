@@ -4,8 +4,10 @@ INSERT INTO USERINFO (
     , MOBILEDEVICEKEY
     , PASSWORD
     , REGISTRATIONID
+    , USERTYPE
 ) VALUES (
     ?
+    , ?
     , ?
     , ?
     , ?

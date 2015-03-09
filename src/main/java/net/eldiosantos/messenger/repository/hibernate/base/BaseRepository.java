@@ -67,4 +67,9 @@ public class BaseRepository<T, K extends Serializable> implements Repository<T, 
 	public void delete(T element) {
 		entityManager.remove(element);
 	}
+
+    @Override
+    public void saveOrUpdate(T element) {
+        entityManager.merge(element);
+    }
 }

@@ -52,6 +52,8 @@
                     	<li class="admin"><a href="${linkTo[AdminController].index() }"><fmt:message key="app.menu.admin" /></a></li>
                     </c:if>
 				</ul>
+				<tag:loginPanel />
+<!--
 				<c:if test="${not empty userSession.login}">
                     <ul class="nav navbar-nav navbar-right" id="userSession">
                         <li class="dropdown">
@@ -66,7 +68,7 @@
                         </li>
                     </ul>
                 </c:if>
-
+-->
 			</div>
 			<!--/.nav-collapse -->
 

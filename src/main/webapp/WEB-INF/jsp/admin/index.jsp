@@ -5,7 +5,13 @@
                 <!-- Form Name -->
                 <legend>Configura&ccedil;&atilde;o da aplica&ccedil;&atilde;o</legend>
 
-                <tag:booleanConfigAttribute id="openReg" name="app.config.open_reg" order="0" value="true" labelKey="admin.config.open_reg" />
+                <tag:booleanConfigAttribute
+                    id="openReg"
+                    name="app.config.open_reg"
+                    order="0"
+                    value="true"
+                    labelKey="admin.config.open_reg"
+                    property="${serverConfigGetter.openRegistrationProperty}"/>
 
                 <!-- Button (Double) -->
                 <div class="row">

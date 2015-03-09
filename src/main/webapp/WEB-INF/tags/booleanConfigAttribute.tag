@@ -7,6 +7,7 @@
 <%@ attribute name="id" required="true" %>
 <%@ attribute name="label" required="false" %>
 <%@ attribute name="labelKey" required="false" %>
+<%@ attribute name="property" required="true" type="net.eldiosantos.messenger.model.config.ServerConfig" %>
 
 <div class="row">
   <div class="col-lg-6">
@@ -14,7 +15,7 @@
 
         <div class="checkbox">
           <label for="${id}">
-            <input type="checkbox" name="configs[${order}].value" id="${id}" value="${value}">
+            <input type="checkbox" name="configs[${order}].value" id="${id}" value="${value}" <c:if test="${property.value == 'true'}"> checked='checked' </c:if>>
             <c:choose>
                 <c:when test="${not empty labelKey}">
                     <fmt:message key="${labelKey}" />
