@@ -1,4 +1,4 @@
-package net.eldiosantos.messenger.constants.script;
+package net.eldiosantos.messenger.constants.properties;
 
 import javax.inject.Named;
 
