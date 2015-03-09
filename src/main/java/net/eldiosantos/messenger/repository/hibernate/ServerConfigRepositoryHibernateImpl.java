@@ -6,7 +6,7 @@ import net.eldiosantos.messenger.repository.hibernate.base.BaseRepository;
 
 import javax.persistence.EntityManager;
 
-public class ServerConfigRepositoryHibernateImpl extends BaseRepository<ServerConfig, Long> implements ServerConfigRepository {
+public class ServerConfigRepositoryHibernateImpl extends BaseRepository<ServerConfig, String> implements ServerConfigRepository {
 
 	@Deprecated
 	public ServerConfigRepositoryHibernateImpl(){
