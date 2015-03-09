@@ -13,9 +13,11 @@
             <div class="form-group">
                 <input type="password" name="pass" placeholder="Password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
+            <button id="send" type="submit" class="btn btn-success">Sign in</button>
+            <c:if test="${serverConfigGetter.openRegistrationProperty.booleanValue}">
+                <a id="signupButton" class="btn btn-info" href="${linkTo[UserController].form()}">Sign up</a>
+            </c:if>
         </form>
-
     <!-- login form -->
     </c:if>
 
