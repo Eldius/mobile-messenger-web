@@ -1,5 +1,6 @@
 package net.eldiosantos.messenger.controller;
 
+import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.brutauth.auth.annotations.SimpleBrutauthRules;
 import br.com.caelum.vraptor.*;
 import net.eldiosantos.messenger.builder.CredentialsBuilder;
@@ -7,7 +8,7 @@ import net.eldiosantos.messenger.hashtools.HashProvider;
 import net.eldiosantos.messenger.model.auth.UserInfo;
 import net.eldiosantos.messenger.model.auth.UserType;
 import net.eldiosantos.messenger.repository.UserInfoRepository;
-import net.eldiosantos.messenger.rule.LoggedUserRule;
+import net.eldiosantos.messenger.rule.EditUserRule;
 import net.eldiosantos.messenger.rule.OpenregistrationRule;
 
 import javax.inject.Inject;
@@ -31,9 +32,10 @@ public class UserController {
     @Inject
     private Result result;
 
-    @Get("/form/{userId}")
-    public UserInfo form(final Long userId) {
-        return userInfoRepository.getByPk(userId);
+    @Get("/form/{user.id}")
+    @CustomBrutauthRules({EditUserRule.class})
+    public UserInfo form(final UserInfo user) {
+        return userInfoRepository.getByPk(user.getId());
     }
 
     @Get("/form")
@@ -42,6 +44,7 @@ public class UserController {
 
     }
 
+    @CustomBrutauthRules({EditUserRule.class})
     public void save(final UserInfo user) {
         if(user.getId() == null) {
             final UserInfo newUser = credentialsBuilder.start()
@@ -55,7 +58,7 @@ public class UserController {
         } else {
             user.setPassword(hashProvider.hash(user.getPassword()));
             userInfoRepository.persist(user);
-            result.redirectTo(this).form(user.getId());
+            result.redirectTo(this).form(user);
         }
     }
 }

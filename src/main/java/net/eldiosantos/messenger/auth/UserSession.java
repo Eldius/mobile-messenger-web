@@ -30,6 +30,10 @@ public class UserSession implements Serializable {
         this.user = null;
     }
 
+    public Long getUserId() {
+        return user!=null?user.getId():null;
+    }
+
     public String getLogin() {
         return user!=null?user.getLogin():null;
     }

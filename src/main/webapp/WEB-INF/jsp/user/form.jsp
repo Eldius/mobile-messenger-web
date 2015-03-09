@@ -8,7 +8,7 @@
 
             <input
                 type="hidden"
-                name="user.id"
+                name="userInfo.id"
                 value="<c:out value="${user.id}" />"
 
             <tag:textFormAttribute
@@ -16,7 +16,7 @@
                 name="user.login"
                 labelKey="user.form.login.label"
                 placeholder="Login"
-                value="${user.login}"
+                value="${userInfo.login}"
                 required="true" />
 
             <tag:passwordFormAttribute
@@ -31,7 +31,7 @@
                 name="user.email"
                 labelKey="user.form.email.label"
                 placeholder="Email"
-                value="${user.email}"
+                value="${userInfo.email}"
                 required="true" />
 
             <div class="row">

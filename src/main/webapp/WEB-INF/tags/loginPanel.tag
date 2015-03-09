@@ -29,6 +29,9 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li>
+                        <a href="${linkTo[UserController].form(userSession.user)}">Perfil</a>
+                    </li>
+                    <li>
                         <a href="${linkTo[LoginController].logout()}">Sair</a>
                     </li>
                 </ul>
