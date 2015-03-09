@@ -17,10 +17,17 @@ public class UserInfoRepositoryHibernateImpl extends BaseRepository<UserInfo, Lo
 	}
 
     @Override
-    public UserInfo validateLogin(String username, String password) {
+    public UserInfo validateLogin(final String username, final String password) {
         return (UserInfo) entityManager.createQuery("select u from UserInfo u where u.login like :login and u.password = :password")
             .setParameter("login", username)
             .setParameter("password", password)
             .getSingleResult();
+    }
+
+    @Override
+    public UserInfo validateToken(final String token) {
+        return (UserInfo) entityManager.createQuery("select u from UserInfo u where u.mobileDeviceKey like :token ")
+                .setParameter("token", token)
+                .getSingleResult();
     }
 }

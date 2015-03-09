@@ -20,6 +20,13 @@ public class DeviceKeyBuilder {
                 .append(user.getRegistrationId())
                 .toString();
 
-        return hashProvider.hash(string);
+        final byte[] hash = hashProvider.binaryHash(string);
+        final StringBuffer result = new StringBuffer();
+
+        for (int i=0;i<hash.length;i++) {
+            result.append(Integer.toHexString(0xFF & hash[i]));
+        }
+
+        return result.toString();
     }
 }

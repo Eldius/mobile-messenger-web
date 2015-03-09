@@ -2,6 +2,7 @@ package net.eldiosantos.messenger.hashtools;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by eldio.junior on 24/02/2015.
@@ -9,10 +10,19 @@ import java.security.MessageDigest;
 public abstract class HashProvider {
     public String hash(final String phrase) {
         try {
-            MessageDigest md = MessageDigest.getInstance(algorithm());
-            return toString(md.digest(phrase.getBytes()));
+            final byte[] digest = binaryHash(phrase);
+            return toString(digest);
         } catch (Exception e) {
             throw new IllegalStateException("Error trying to hash a phrase", e);
+        }
+    }
+
+    public byte[] binaryHash(String phrase) {
+        try {
+            MessageDigest md = MessageDigest.getInstance(algorithm());
+            return md.digest(phrase.getBytes());
+        }catch (Exception e) {
+            throw new IllegalArgumentException("Error generating hash", e);
         }
     }
 

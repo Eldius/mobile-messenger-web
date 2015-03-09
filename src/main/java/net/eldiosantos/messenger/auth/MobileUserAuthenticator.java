@@ -32,7 +32,9 @@ public class MobileUserAuthenticator {
         return deviceKey;
     }
 
-    public void invalidate() {
-        userAuthenticator.invalidate();
+    public void invalidate(final String token) {
+        UserInfo loggedUser = userInfoRepository.validateToken(token);
+        loggedUser.setMobileDeviceKey(null);
+        userInfoRepository.update(loggedUser);
     }
 }
