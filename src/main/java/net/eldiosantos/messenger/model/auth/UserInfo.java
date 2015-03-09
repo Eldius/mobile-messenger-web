@@ -68,24 +68,27 @@ public class UserInfo {
         return registrationId;
     }
 
-    public void setRegistrationId(String registrationId) {
+    public UserInfo setRegistrationId(String registrationId) {
         this.registrationId = registrationId;
+        return this;
     }
 
     public String getMobileDeviceKey() {
         return mobileDeviceKey;
     }
 
-    public void setMobileDeviceKey(String mobileDeviceKey) {
+    public UserInfo setMobileDeviceKey(String mobileDeviceKey) {
         this.mobileDeviceKey = mobileDeviceKey;
+        return this;
     }
 
     public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(UserType userType) {
+    public UserInfo setUserType(UserType userType) {
         this.userType = userType;
+        return this;
     }
 
     @Override

@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
 import net.eldiosantos.messenger.model.config.ServerConfig;
 import net.eldiosantos.messenger.repository.ServerConfigRepository;
+import net.eldiosantos.messenger.rule.AdminUserRule;
 import net.eldiosantos.messenger.rule.LoggedUserRule;
 
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import java.util.Map;
  */
 @Controller
 @Path("/admin")
+@SimpleBrutauthRules({AdminUserRule.class})
 public class AdminController {
 
     @Inject
@@ -29,7 +31,6 @@ public class AdminController {
     private Result result;
 
     @Path("/")
-    @SimpleBrutauthRules({LoggedUserRule.class})
     public void index() {
         final Map<String, ServerConfig>properties = new HashMap<String, ServerConfig>();
         for(ServerConfig cfg: serverConfigRepository.listAll()) {

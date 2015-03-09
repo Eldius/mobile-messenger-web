@@ -5,6 +5,7 @@ import br.com.caelum.vraptor.*;
 import net.eldiosantos.messenger.builder.CredentialsBuilder;
 import net.eldiosantos.messenger.hashtools.HashProvider;
 import net.eldiosantos.messenger.model.auth.UserInfo;
+import net.eldiosantos.messenger.model.auth.UserType;
 import net.eldiosantos.messenger.repository.UserInfoRepository;
 import net.eldiosantos.messenger.rule.LoggedUserRule;
 import net.eldiosantos.messenger.rule.OpenregistrationRule;
@@ -47,7 +48,8 @@ public class UserController {
                     .login(user.getLogin())
                     .password(user.getPassword())
                     .build()
-                    .setEmail(user.getEmail());
+                    .setEmail(user.getEmail())
+                    .setUserType(UserType.USER);
             userInfoRepository.persist(newUser);
             result.redirectTo(this).form();
         } else {
