@@ -1,6 +1,6 @@
 package net.eldiosantos.messenger.auth;
 
-import net.eldiosantos.messenger.builder.UserBuilder;
+import net.eldiosantos.messenger.builder.CredentialsBuilder;
 import net.eldiosantos.messenger.hashtools.HashProvider;
 import net.eldiosantos.messenger.model.auth.UserInfo;
 import net.eldiosantos.messenger.repository.UserInfoRepository;
@@ -26,7 +26,7 @@ public class UserAuthenticator {
     private HashProvider hashProvider;
 
     @Inject
-    private UserBuilder builder;
+    private CredentialsBuilder builder;
 
     public UserInfo validate(final String login, final String password) {
 

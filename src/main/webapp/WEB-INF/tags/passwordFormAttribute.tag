@@ -7,7 +7,6 @@
 <%@ attribute name="labelKey" required="false" %>
 <%@ attribute name="placeholder" required="false" %>
 <%@ attribute name="required" required="false" %>
-<%@ attribute name="value" required="false" %>
 
 <!-- Text input-->
 <div class="row">
@@ -24,17 +23,7 @@
         </c:choose>
       </span>
       <div class="controls">
-        <input
-            type="text"
-            class="form-control"
-            aria-describedby="basic-addon1"
-            id="${id}"
-            name="${name}"
-            type="text"
-            placeholder="${placeholder}"
-            class="input-xlarge"
-            <c:if test="${required}"> required="" </c:if>
-            value="<c:out value="${value}" />" >
+        <input type="password" class="form-control" aria-describedby="basic-addon1" id="${id}" name="${name}" type="text" placeholder="${placeholder}" class="input-xlarge" <c:if test="${required}"> required="" </c:if> >
       </div>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->

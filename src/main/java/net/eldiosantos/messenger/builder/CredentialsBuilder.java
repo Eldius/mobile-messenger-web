@@ -8,28 +8,28 @@ import javax.inject.Inject;
 /**
  * Created by eldio.junior on 24/02/2015.
  */
-public class UserBuilder {
+public class CredentialsBuilder {
 
     @Inject
     private HashProvider provider;
 
     private UserInfo user;
 
-    public UserBuilder() {
+    public CredentialsBuilder() {
         user = new UserInfo();
     }
 
-    public UserBuilder start() {
+    public CredentialsBuilder start() {
         user = new UserInfo();
         return this;
     }
 
-    public UserBuilder login(String login) {
+    public CredentialsBuilder login(String login) {
         user.setLogin(login);
         return this;
     }
 
-    public UserBuilder password(String password) {
+    public CredentialsBuilder password(String password) {
         user.setPassword(provider.hash(password));
         return this;
     }
