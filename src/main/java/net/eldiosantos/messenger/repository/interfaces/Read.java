@@ -5,6 +5,6 @@ import java.util.List;
 
 public interface Read<T, K extends Serializable>
 {
-    public T getByPk(K pk);
-    public List<T>listAll();
+    T getByPk(K pk);
+    List<T>listAll();
 }

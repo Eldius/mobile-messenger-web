@@ -3,12 +3,13 @@ package net.eldiosantos.messenger.model.auth;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by eldio.junior on 12/02/2015.
  */
 @Entity
-public class UserInfo {
+public class UserInfo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -4,8 +4,6 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import net.eldiosantos.messenger.auth.UserAuthenticator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
@@ -16,8 +14,6 @@ import javax.persistence.NoResultException;
 @Path("/login")
 @Controller
 public class LoginController {
-
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Inject
     private UserAuthenticator authenticator;

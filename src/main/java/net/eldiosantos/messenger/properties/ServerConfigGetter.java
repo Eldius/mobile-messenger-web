@@ -5,7 +5,6 @@ import net.eldiosantos.messenger.repository.ServerConfigRepository;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +12,7 @@ import java.util.Map;
  * Created by eldio.junior on 09/03/2015.
  */
 @Named("serverConfigGetter")
-public class ServerConfigGetter implements Serializable {
+public class ServerConfigGetter {
 
     private final Map<String, ServerConfig>properties = new HashMap<String, ServerConfig>();
 

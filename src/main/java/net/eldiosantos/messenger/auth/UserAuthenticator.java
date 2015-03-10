@@ -1,11 +1,8 @@
 package net.eldiosantos.messenger.auth;
 
-import net.eldiosantos.messenger.builder.CredentialsBuilder;
 import net.eldiosantos.messenger.hashtools.HashProvider;
 import net.eldiosantos.messenger.model.auth.UserInfo;
 import net.eldiosantos.messenger.repository.UserInfoRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 
@@ -13,8 +10,6 @@ import javax.inject.Inject;
  * Created by Eldius on 03/03/2015.
  */
 public class UserAuthenticator {
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Inject
     private UserInfoRepository userInfoRepository;
@@ -24,9 +19,6 @@ public class UserAuthenticator {
 
     @Inject
     private HashProvider hashProvider;
-
-    @Inject
-    private CredentialsBuilder builder;
 
     public UserInfo validate(final String login, final String password) {
 

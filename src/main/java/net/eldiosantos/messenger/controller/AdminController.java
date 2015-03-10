@@ -5,11 +5,9 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.view.Results;
 import net.eldiosantos.messenger.model.config.ServerConfig;
 import net.eldiosantos.messenger.repository.ServerConfigRepository;
 import net.eldiosantos.messenger.rule.AdminUserRule;
-import net.eldiosantos.messenger.rule.LoggedUserRule;
 
 import javax.inject.Inject;
 import java.util.HashMap;

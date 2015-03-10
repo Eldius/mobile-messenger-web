@@ -9,8 +9,6 @@ import br.com.caelum.vraptor.http.MutableRequest;
 import br.com.caelum.vraptor.view.Results;
 import net.eldiosantos.messenger.auth.MobileUserAuthenticator;
 import net.eldiosantos.messenger.rule.RESTRequestRule;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletRequest;
@@ -22,8 +20,6 @@ import javax.servlet.ServletRequest;
 @Controller
 @SimpleBrutauthRules({RESTRequestRule.class})
 public class JSONLoginController {
-
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Inject
     private MobileUserAuthenticator authenticator;

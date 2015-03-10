@@ -12,7 +12,7 @@ public enum ScriptConstants {
     private final String script;
 
     ScriptConstants(final String file) {
-        final Scanner sc = new Scanner(this.getClass().getClassLoader().getResourceAsStream(file));
+        final Scanner sc = new Scanner(this.getClass().getClassLoader().getResourceAsStream(file), "utf-8");
         final StringBuffer sql = new StringBuffer();
         while(sc.hasNextLine()) {
             sql.append(sc.nextLine())
