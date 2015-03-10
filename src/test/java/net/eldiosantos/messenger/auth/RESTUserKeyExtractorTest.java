@@ -33,7 +33,7 @@ public class RESTUserKeyExtractorTest {
     public void testExtractWithoutKey() throws Exception {
         final String key = userKeyExtractor.extract();
 
-        assertNull("Test without key on request");
+        assertNull("Test without key on request", key);
 
         Mockito.verify(request).getHeader(RESTUserKeyExtractor.AUTH_TOKEN_HEADER);
     }
