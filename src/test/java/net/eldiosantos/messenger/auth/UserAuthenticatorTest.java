@@ -58,6 +58,7 @@ public class UserAuthenticatorTest {
 
         assertEquals("Validating userSession's user values - ID", userSession.getUserId(), Long.valueOf(69));
         assertEquals("Validating userSession's user values - login", userSession.getLogin(), login);
+        assertTrue("Validating user is logged", userSession.isLogged());
     }
 
     @Test(expected = NoResultException.class)
@@ -90,6 +91,9 @@ public class UserAuthenticatorTest {
         new UserAuthenticator(userInfoRepository, userSession, hashProvider).invalidate();
 
         assertNull("There isn't an user in the session", userSession.getUser());
+        assertNull("There isn't an user login in the session", userSession.getLogin());
+        assertNull("There isn't an user id in the session", userSession.getUserId());
+        assertFalse("The usr isn't logged", userSession.isLogged());
     }
 
     @Test
@@ -98,5 +102,8 @@ public class UserAuthenticatorTest {
         new UserAuthenticator(userInfoRepository, userSession, hashProvider).invalidate();
 
         assertNull("There isn't an user in the session", userSession.getUser());
+        assertNull("There isn't an user login in the session", userSession.getLogin());
+        assertNull("There isn't an user id in the session", userSession.getUserId());
+        assertFalse("The usr isn't logged", userSession.isLogged());
     }
 }
