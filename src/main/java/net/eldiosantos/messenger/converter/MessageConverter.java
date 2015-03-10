@@ -1,0 +1,48 @@
+package net.eldiosantos.messenger.converter;
+
+import net.eldiosantos.messenger.auth.RESTUserKeyExtractor;
+import net.eldiosantos.messenger.model.Message;
+import net.eldiosantos.messenger.repository.UserInfoRepository;
+import net.eldiosantos.messenger.vo.MessageVO;
+
+import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by eldio.junior on 10/03/2015.
+ */
+public abstract class MessageConverter {
+
+    @Inject
+    private UserInfoRepository userInfoRepository;
+
+    @Inject
+    private RESTUserKeyExtractor userKeyExtractor;
+
+    public Message fromVo(final MessageVO vo) {
+        final Message msg = new Message();
+
+        msg.setFrom(userInfoRepository.validateToken(userKeyExtractor.extract()));
+        msg.setTo(userInfoRepository.getByPk(vo.getTo()));
+        return msg;
+    }
+
+    public List<MessageVO>toVo(final List<Message>msgs) {
+        final List<MessageVO> vos = new ArrayList<MessageVO>();
+
+        for(Message msg: msgs) {
+            vos.add(toVo(msg));
+        }
+
+        return vos;
+    }
+
+    public MessageVO toVo(final Message msg) {
+        return new MessageVO()
+                .setFrom(msg.getFrom().getId())
+                .setTo(msg.getTo().getId())
+                .setMessage(msg.getMessage())
+                .setFromName(msg.getFrom().getLogin());
+    }
+}

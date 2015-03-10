@@ -23,6 +23,5 @@ public class MessageRepositoryHibernateImpl extends BaseRepository<Message, Long
         return entityManager.createQuery("select m from Message m where u.id > :begin")
                 .setParameter("begin", begin)
                 .getResultList();
-
     }
 }

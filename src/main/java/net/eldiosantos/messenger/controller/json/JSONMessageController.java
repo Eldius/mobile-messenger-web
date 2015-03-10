@@ -1,13 +1,13 @@
 package net.eldiosantos.messenger.controller.json;
 
 import br.com.caelum.brutauth.auth.annotations.SimpleBrutauthRules;
-import br.com.caelum.vraptor.Controller;
-import br.com.caelum.vraptor.Get;
-import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.view.Results;
+import br.com.caelum.vraptor.*;
+import static br.com.caelum.vraptor.view.Results.*;
+import net.eldiosantos.messenger.converter.MessageConverter;
+import net.eldiosantos.messenger.model.Message;
 import net.eldiosantos.messenger.repository.MessageRepository;
 import net.eldiosantos.messenger.rule.RESTRequestRule;
+import net.eldiosantos.messenger.vo.MessageVO;
 
 import javax.inject.Inject;
 
@@ -23,16 +23,25 @@ public class JSONMessageController {
     private MessageRepository messageRepository;
 
     @Inject
+    private MessageConverter messageConverter;
+
+    @Inject
     private Result result;
 
     @Get("/")
     public void list() {
-        result.use(Results.json()).from(messageRepository.listAll()).serialize();
+        result.use(json()).from(messageConverter.toVo(messageRepository.listAll())).serialize();
     }
 
     @Get("/messages/{begin}")
     public void list(final Long begin) {
-        result.use(Results.json()).from(messageRepository.getFrom(begin)).serialize();
+        result.use(json()).from(messageConverter.toVo(messageRepository.getFrom(begin))).serialize();
     }
 
+    @Post("send")
+    public void send(final MessageVO vo) {
+        final Message msg = messageConverter.fromVo(vo);
+        messageRepository.persist(msg);
+        result.use(json()).from("ok").serialize();
+    }
 }
