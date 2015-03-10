@@ -30,10 +30,10 @@ public class MessageConverter {
     }
 
     public Message fromVo(final MessageVO vo) {
-        final Message msg = new Message();
-
-        msg.setFrom(userInfoRepository.validateToken(userKeyExtractor.extract()));
-        msg.setTo(userInfoRepository.getByPk(vo.getTo()));
+        final Message msg = new Message()
+                .setFrom(userInfoRepository.validateToken(userKeyExtractor.extract()))
+                .setTo(userInfoRepository.getByPk(vo.getTo()))
+                .setMessage(vo.getMessage());
         return msg;
     }
 

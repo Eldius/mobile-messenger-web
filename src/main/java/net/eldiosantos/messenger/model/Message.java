@@ -29,32 +29,36 @@ public class Message implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    public Message setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public UserInfo getFrom() {
         return from;
     }
 
-    public void setFrom(UserInfo from) {
+    public Message setFrom(UserInfo from) {
         this.from = from;
+        return this;
     }
 
     public UserInfo getTo() {
         return to;
     }
 
-    public void setTo(UserInfo to) {
+    public Message setTo(UserInfo to) {
         this.to = to;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public Message setMessage(String message) {
         this.message = message;
+        return this;
     }
 
     @Override
