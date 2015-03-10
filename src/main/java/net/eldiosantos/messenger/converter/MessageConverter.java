@@ -12,13 +12,22 @@ import java.util.List;
 /**
  * Created by eldio.junior on 10/03/2015.
  */
-public abstract class MessageConverter {
+public class MessageConverter {
 
     @Inject
     private UserInfoRepository userInfoRepository;
 
     @Inject
     private RESTUserKeyExtractor userKeyExtractor;
+
+    @Deprecated
+    public MessageConverter() {
+    }
+
+    public MessageConverter(UserInfoRepository userInfoRepository, RESTUserKeyExtractor userKeyExtractor) {
+        this.userInfoRepository = userInfoRepository;
+        this.userKeyExtractor = userKeyExtractor;
+    }
 
     public Message fromVo(final MessageVO vo) {
         final Message msg = new Message();
