@@ -20,6 +20,16 @@ public class UserAuthenticator {
     @Inject
     private HashProvider hashProvider;
 
+    @Deprecated
+    public UserAuthenticator() {
+    }
+
+    public UserAuthenticator(UserInfoRepository userInfoRepository, UserSession userSession, HashProvider hashProvider) {
+        this.userInfoRepository = userInfoRepository;
+        this.userSession = userSession;
+        this.hashProvider = hashProvider;
+    }
+
     public UserInfo validate(final String login, final String password) {
 
         final UserInfo userInfo = userInfoRepository.validateLogin(login, hashProvider.hash(password));
