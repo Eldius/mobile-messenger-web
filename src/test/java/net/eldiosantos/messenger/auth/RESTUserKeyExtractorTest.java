@@ -30,7 +30,7 @@ public class RESTUserKeyExtractorTest {
     }
 
     @Test
-    public void testExtractWithoutKey() throws Exception {
+    public void testExtractWithoutKeytestExtract() throws Exception {
         final String key = userKeyExtractor.extract();
 
         assertNull("Test without key on request", key);
@@ -39,13 +39,13 @@ public class RESTUserKeyExtractorTest {
     }
 
     @Test
-    public void testExtract() throws Exception {
+    public void testExtractWithoutKey() throws Exception {
+        final String key = userKeyExtractor.extract();
 
         final String userKey = "user access key";
         Mockito.when(request.getHeader(RESTUserKeyExtractor.AUTH_TOKEN_HEADER)).thenReturn(userKey);
-        final String key = userKeyExtractor.extract();
 
-        assertEquals("Test with a user key", userKey, key);
+        assertNull("Test without key on request", key);
 
         Mockito.verify(request).getHeader(RESTUserKeyExtractor.AUTH_TOKEN_HEADER);
     }
