@@ -21,6 +21,15 @@ public class RESTRequestRule implements SimpleBrutauthRule {
     @Inject
     private RESTUserKeyExtractor userKeyExtractor;
 
+    @Deprecated
+    public RESTRequestRule() {
+    }
+
+    public RESTRequestRule(UserInfoRepository userInfoRepository, RESTUserKeyExtractor userKeyExtractor) {
+        this.userInfoRepository = userInfoRepository;
+        this.userKeyExtractor = userKeyExtractor;
+    }
+
     @Override
     public boolean isAllowed(long accessLevel) {
         final String token = userKeyExtractor.extract();
