@@ -17,6 +17,14 @@ public class RESTUserKeyExtractor {
     @Inject
     private ServletRequest request;
 
+    @Deprecated
+    public RESTUserKeyExtractor() {
+    }
+
+    public RESTUserKeyExtractor(ServletRequest request) {
+        this.request = request;
+    }
+
     public String extract() {
         return ((MutableRequest) request).getHeader(AUTH_TOKEN_HEADER);
     }
