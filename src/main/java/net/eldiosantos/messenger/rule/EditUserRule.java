@@ -16,6 +16,14 @@ public class EditUserRule implements CustomBrutauthRule {
     @Inject
     private UserSession userSession;
 
+    @Deprecated
+    public EditUserRule() {
+    }
+
+    public EditUserRule(UserSession userSession) {
+        this.userSession = userSession;
+    }
+
     @BrutauthValidation
     public boolean isAllowed(UserInfo user) {
 
@@ -26,7 +34,7 @@ public class EditUserRule implements CustomBrutauthRule {
         final boolean isSameUser = user.getId() != null ? user.getId().equals(userSession.getUserId()) : false;
 
         // Criacao de novo usuario
-        final boolean isNewUser = (user.getId() == null) && (userSession.getUserId() == null);
+        final boolean isNewUser = (user.getId() == null);
         return isAdmin
                || isSameUser
                || isNewUser;

@@ -17,6 +17,14 @@ public class OpenRegistrationRule implements SimpleBrutauthRule {
     @Inject
     private ServerConfigGetter serverConfigGetter;
 
+    @Deprecated
+    public OpenRegistrationRule() {
+    }
+
+    public OpenRegistrationRule(ServerConfigGetter serverConfigGetter) {
+        this.serverConfigGetter = serverConfigGetter;
+    }
+
     @Override
     public boolean isAllowed(long accessLevel) {
         final ServerConfig cfg = serverConfigGetter.getOpenRegistrationProperty();
