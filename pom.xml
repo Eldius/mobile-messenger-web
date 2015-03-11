@@ -258,7 +258,10 @@
                 <version>0.7.4.201502262128</version>
                 <configuration>
                     <excludes>
-                        <sxclude>net.eldiosantos.messenger.model.*</sxclude>
+                        <!-- Model classes -->
+                        <exclude>**/model/**</exclude>
+                        <!-- Constant classes -->
+                        <exclude>**/constants/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
