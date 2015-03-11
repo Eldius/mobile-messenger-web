@@ -15,8 +15,12 @@ public class CredentialsBuilder {
 
     private UserInfo user;
 
+    @Deprecated
     public CredentialsBuilder() {
-        user = new UserInfo();
+    }
+
+    public CredentialsBuilder(HashProvider provider) {
+        this.provider = provider;
     }
 
     public CredentialsBuilder start() {

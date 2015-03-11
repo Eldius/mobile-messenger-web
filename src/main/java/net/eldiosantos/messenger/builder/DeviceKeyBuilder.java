@@ -13,6 +13,14 @@ public class DeviceKeyBuilder {
     @Inject
     private HashProvider hashProvider;
 
+    @Deprecated
+    public DeviceKeyBuilder() {
+    }
+
+    public DeviceKeyBuilder(HashProvider hashProvider) {
+        this.hashProvider = hashProvider;
+    }
+
     public String build(final UserInfo user) {
         final String string = new StringBuffer()
                 .append(user.getEmail())
