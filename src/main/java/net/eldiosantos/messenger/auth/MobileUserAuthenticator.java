@@ -20,6 +20,16 @@ public class MobileUserAuthenticator {
     @Inject
     private UserInfoRepository userInfoRepository;
 
+    @Deprecated
+    public MobileUserAuthenticator() {
+    }
+
+    public MobileUserAuthenticator(UserAuthenticator userAuthenticator, DeviceKeyBuilder deviceKeyBuilder, UserInfoRepository userInfoRepository) {
+        this.userAuthenticator = userAuthenticator;
+        this.deviceKeyBuilder = deviceKeyBuilder;
+        this.userInfoRepository = userInfoRepository;
+    }
+
     public String validate(final String login, final String password) {
         UserInfo loggedUser = userAuthenticator.validate(login, password);
         String deviceKey = deviceKeyBuilder.build(loggedUser);
