@@ -19,6 +19,14 @@ public class ServerConfigGetter {
     @Inject
     private ServerConfigRepository serverConfigRepository;
 
+    @Deprecated
+    public ServerConfigGetter() {
+    }
+
+    public ServerConfigGetter(ServerConfigRepository serverConfigRepository) {
+        this.serverConfigRepository = serverConfigRepository;
+    }
+
     public ServerConfig getOpenRegistrationProperty() {
         return get("app.config.open_reg");
     }
