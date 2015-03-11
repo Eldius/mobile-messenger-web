@@ -12,7 +12,7 @@ import javax.inject.Inject;
  * Created by eldio.junior on 09/03/2015.
  */
 @HandledBy(OpenRegistrationHandler.class)
-public class OpenregistrationRule implements SimpleBrutauthRule {
+public class OpenRegistrationRule implements SimpleBrutauthRule {
 
     @Inject
     private ServerConfigGetter serverConfigGetter;

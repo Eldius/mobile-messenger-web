@@ -9,7 +9,7 @@ import net.eldiosantos.messenger.model.auth.UserInfo;
 import net.eldiosantos.messenger.model.auth.UserType;
 import net.eldiosantos.messenger.repository.UserInfoRepository;
 import net.eldiosantos.messenger.rule.EditUserRule;
-import net.eldiosantos.messenger.rule.OpenregistrationRule;
+import net.eldiosantos.messenger.rule.OpenRegistrationRule;
 
 import javax.inject.Inject;
 
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @Get("/form")
-    @SimpleBrutauthRules({OpenregistrationRule.class})
+    @SimpleBrutauthRules({OpenRegistrationRule.class})
     public void form() {
 
     }
