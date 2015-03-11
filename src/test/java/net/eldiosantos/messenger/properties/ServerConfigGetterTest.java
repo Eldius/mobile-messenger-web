@@ -44,6 +44,7 @@ public class ServerConfigGetterTest {
 
         assertTrue("Validating config is true", serverConfig.getBooleanValue());
         assertEquals("Validating it's returning the same object", value, serverConfig);
+        assertEquals("Second time i get a property, is it the same one?", serverConfig.getValue(), serverConfigGetter.getOpenRegistrationProperty().getValue());
     }
 
     @Test
