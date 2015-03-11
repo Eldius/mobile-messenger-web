@@ -14,6 +14,14 @@ public class AdminUserRule implements SimpleBrutauthRule {
     @Inject
     private UserSession userSession;
 
+    @Deprecated
+    public AdminUserRule() {
+    }
+
+    public AdminUserRule(UserSession userSession) {
+        this.userSession = userSession;
+    }
+
     @Override
     public boolean isAllowed(long accessLevel) {
         return (userSession.getUser()!=null? UserType.ADMIN.equals(userSession.getUser().getUserType()):false);
