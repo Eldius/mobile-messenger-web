@@ -20,7 +20,7 @@ public class MessageRepositoryHibernateImpl extends BaseRepository<Message, Long
 
     @Override
     public List<Message> getFrom(Long begin) {
-        return entityManager.createQuery("select m from Message m where u.id > :begin")
+        return (List<Message>)entityManager.createQuery("select m from Message m where u.id > :begin")
                 .setParameter("begin", begin)
                 .getResultList();
     }
