@@ -16,6 +16,14 @@ public class LoggedUserRule implements SimpleBrutauthRule {
     @Inject
     private UserSession userSession;
 
+    @Deprecated
+    public LoggedUserRule() {
+    }
+
+    public LoggedUserRule(UserSession userSession) {
+        this.userSession = userSession;
+    }
+
     @Override
     public boolean isAllowed(long accessLevel) {
         return userSession.isLogged();
