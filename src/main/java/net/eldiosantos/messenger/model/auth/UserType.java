@@ -12,4 +12,8 @@ public enum UserType {
     UserType(final int accessLevel) {
         this.accessLevel = accessLevel;
     }
+
+    public int getAccessLevel() {
+        return accessLevel;
+    }
 }

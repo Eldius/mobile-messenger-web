@@ -38,6 +38,16 @@
                 &nbsp;
             </div>
             <button type="submit" class="btn btn-success">Salvar</button>
-            <button type="reset" class="btn btn-danger">Cancelar</button>
+            <button type="reset" class="btn btn-danger" id="cancel">Cancelar</button>
         </fieldset>
     </form>
+
+<script>
+
+	function init() {
+        $("#cancel").click(function() {
+            history.back();
+        });
+	}
+
+</script>

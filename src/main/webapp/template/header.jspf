@@ -17,10 +17,11 @@
 
 <!-- Bootstrap core CSS -->
 <link href='<c:url value="/static/css/bootstrap.min.css" />' rel="stylesheet">
-<link href='<c:url value="/static/css/bootstrap-dialog.min.css" />' rel="stylesheet">
+<link href='<c:url value="/static/css/bootstrap-switch.min.css" />' rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<c:url value="/static/css/starter-template.css" />" rel="stylesheet">
+
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -49,6 +50,7 @@
 					    <li class="login"><a href="${linkTo[LoginController].form() }"><fmt:message key="app.menu.login" /></a></li>
 					</c:if>
 					<c:if test="${not empty userSession.login && rules[AdminUserRule].isAllowed(0)}">
+					    <li class="users"><a href="${linkTo[UserController].index() }"><fmt:message key="app.menu.user" /></a></li>
                     	<li class="admin"><a href="${linkTo[AdminController].index() }"><fmt:message key="app.menu.admin" /></a></li>
                     </c:if>
 				</ul>
