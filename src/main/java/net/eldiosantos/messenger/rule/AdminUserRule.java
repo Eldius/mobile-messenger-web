@@ -4,14 +4,14 @@ import br.com.caelum.brutauth.auth.annotations.HandledBy;
 import br.com.caelum.brutauth.auth.rules.SimpleBrutauthRule;
 import net.eldiosantos.messenger.auth.UserSession;
 import net.eldiosantos.messenger.model.auth.UserType;
-import net.eldiosantos.messenger.rule.handler.ToIndexHandler;
+import net.eldiosantos.messenger.rule.handler.AdminHandler;
 
 import javax.inject.Inject;
 
 /**
  * Created by eldio.junior on 09/03/2015.
  */
-@HandledBy(ToIndexHandler.class)
+@HandledBy(AdminHandler.class)
 public class AdminUserRule implements SimpleBrutauthRule {
 
     @Inject
