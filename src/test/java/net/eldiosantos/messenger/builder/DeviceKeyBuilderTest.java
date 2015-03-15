@@ -32,9 +32,12 @@ public class DeviceKeyBuilderTest {
                 .setId(171L);
 
         final String firstKey = new DeviceKeyBuilder(new SHAHashProvider()).build(user);
+
+        Thread.sleep(1000);
+        
         final String secundKey = new DeviceKeyBuilder(new SHAHashProvider()).build(user);
 
-        assertEquals("Validating that the same data produces same key", firstKey, secundKey);
+        assertNotEquals("Validating that app creates different keys at a time", firstKey, secundKey);
     }
 
     @Test(expected = NullPointerException.class)

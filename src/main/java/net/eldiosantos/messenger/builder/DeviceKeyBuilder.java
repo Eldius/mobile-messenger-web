@@ -26,6 +26,7 @@ public class DeviceKeyBuilder {
                 .append(user.getEmail())
                 .append(user.getLogin())
                 .append(user.getRegistrationId())
+                .append(System.currentTimeMillis())
                 .toString();
 
         final byte[] hash = hashProvider.binaryHash(string);
