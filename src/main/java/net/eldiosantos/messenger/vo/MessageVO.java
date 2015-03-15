@@ -8,6 +8,7 @@ import java.io.Serializable;
  * Created by eldio.junior on 10/03/2015.
  */
 public class MessageVO implements Serializable {
+    private Long msgId;
     private Long from;
     private Long to;
     private String message;
@@ -56,6 +57,15 @@ public class MessageVO implements Serializable {
 
     public MessageVO setFromName(String fromName) {
         this.fromName = fromName;
+        return this;
+    }
+
+    public Long getMsgId() {
+        return msgId;
+    }
+
+    public MessageVO setMsgId(Long msgId) {
+        this.msgId = msgId;
         return this;
     }
 

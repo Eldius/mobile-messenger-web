@@ -34,7 +34,7 @@ public class DeviceKeyBuilderTest {
         final String firstKey = new DeviceKeyBuilder(new SHAHashProvider()).build(user);
 
         Thread.sleep(1000);
-        
+
         final String secundKey = new DeviceKeyBuilder(new SHAHashProvider()).build(user);
 
         assertNotEquals("Validating that app creates different keys at a time", firstKey, secundKey);

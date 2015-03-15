@@ -52,6 +52,7 @@ public class MessageConverter {
                 .setFrom(msg.getFrom().getId())
                 .setTo(msg.getTo().getId())
                 .setMessage(msg.getMessage())
-                .setFromName(msg.getFrom().getLogin());
+                .setFromName(msg.getFrom().getLogin())
+                .setMsgId(msg.getId());
     }
 }

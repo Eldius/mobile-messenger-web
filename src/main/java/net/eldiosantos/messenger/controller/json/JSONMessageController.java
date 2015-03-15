@@ -38,7 +38,8 @@ public class JSONMessageController {
         result.use(json()).from(messageConverter.toVo(messageRepository.getFrom(begin))).serialize();
     }
 
-    @Post("send")
+    @Consumes("application/json")
+    @Post("/send")
     public void send(final MessageVO vo) {
         final Message msg = messageConverter.fromVo(vo);
         messageRepository.persist(msg);
