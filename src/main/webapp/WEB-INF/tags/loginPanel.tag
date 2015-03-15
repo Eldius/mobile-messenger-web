@@ -14,7 +14,7 @@
                 <input type="password" name="pass" placeholder="Password" class="form-control">
             </div>
             <button id="send" type="submit" class="btn btn-success">Sign in</button>
-            <c:if test="${serverConfigGetter.openRegistrationProperty.booleanValue}">
+            <c:if test="${not empty serverConfigGetter.openRegistrationProperty && serverConfigGetter.openRegistrationProperty.booleanValue}">
                 <a id="signupButton" class="btn btn-info" href="${linkTo[UserController].form()}">Sign up</a>
             </c:if>
         </form>
