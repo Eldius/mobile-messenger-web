@@ -43,6 +43,6 @@ public class JSONMessageController {
     public void send(final MessageVO vo) {
         final Message msg = messageConverter.fromVo(vo);
         messageRepository.persist(msg);
-        result.use(json()).from("ok").serialize();
+        result.use(json()).from(messageConverter.toVo(msg)).serialize();
     }
 }
