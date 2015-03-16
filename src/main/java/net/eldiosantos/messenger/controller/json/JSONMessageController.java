@@ -7,6 +7,7 @@ import net.eldiosantos.messenger.converter.MessageConverter;
 import net.eldiosantos.messenger.model.Message;
 import net.eldiosantos.messenger.repository.MessageRepository;
 import net.eldiosantos.messenger.rule.RESTRequestRule;
+import net.eldiosantos.messenger.service.GetUserMessages;
 import net.eldiosantos.messenger.vo.MessageVO;
 
 import javax.inject.Inject;
@@ -26,16 +27,19 @@ public class JSONMessageController {
     private MessageConverter messageConverter;
 
     @Inject
+    private GetUserMessages getUserMessages;
+
+    @Inject
     private Result result;
 
     @Get("/")
     public void list() {
-        result.use(json()).from(messageConverter.toVo(messageRepository.listAll())).serialize();
+        result.use(json()).from(messageConverter.toVo(getUserMessages.list())).serialize();
     }
 
     @Get("/messages/{begin}")
     public void list(final Long begin) {
-        result.use(json()).from(messageConverter.toVo(messageRepository.getFrom(begin))).serialize();
+        result.use(json()).from(messageConverter.toVo(getUserMessages.list(begin))).serialize();
     }
 
     @Consumes("application/json")
