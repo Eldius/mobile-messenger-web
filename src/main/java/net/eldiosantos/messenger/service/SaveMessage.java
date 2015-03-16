@@ -18,6 +18,15 @@ public class SaveMessage {
     @Inject
     private MessageConverter messageConverter;
 
+    @Deprecated
+    public SaveMessage() {
+    }
+
+    public SaveMessage(MessageRepository messageRepository, MessageConverter messageConverter) {
+        this.messageRepository = messageRepository;
+        this.messageConverter = messageConverter;
+    }
+
     public MessageVO save(final MessageVO vo) {
         final Message msg = messageConverter.fromVo(vo);
         messageRepository.persist(msg);

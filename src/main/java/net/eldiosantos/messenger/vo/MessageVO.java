@@ -17,7 +17,8 @@ public class MessageVO implements Serializable {
     public MessageVO() {
     }
 
-    public MessageVO(Long from, Long to, String message, String fromName) {
+    public MessageVO(Long msgId, Long from, Long to, String message, String fromName) {
+        this.msgId = msgId;
         this.from = from;
         this.to = to;
         this.message = message;
