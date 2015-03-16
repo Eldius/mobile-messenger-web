@@ -2,13 +2,12 @@ package net.eldiosantos.messenger.controller.json;
 
 import br.com.caelum.brutauth.auth.annotations.Public;
 import br.com.caelum.brutauth.auth.annotations.SimpleBrutauthRules;
-import br.com.caelum.vraptor.Controller;
-import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.*;
 import br.com.caelum.vraptor.http.MutableRequest;
 import br.com.caelum.vraptor.view.Results;
 import net.eldiosantos.messenger.auth.MobileUserAuthenticator;
 import net.eldiosantos.messenger.rule.RESTRequestRule;
+import net.eldiosantos.messenger.vo.UserLoginData;
 
 import javax.inject.Inject;
 import javax.servlet.ServletRequest;
@@ -30,15 +29,11 @@ public class JSONLoginController {
     @Inject
     private ServletRequest request;
 
-    @Path("/")
-    public void form() {
-
-    }
-
-    @Path("/login")
+    @Post("/login")
     @Public
-    public void login(final String login, final String pass) {
-        result.use(Results.json()).from(authenticator.validate(login, pass)).serialize();
+    @Consumes("application/json")
+    public void login(final UserLoginData loginData) {
+        result.use(Results.json()).from(authenticator.validate(loginData.getLogin(), loginData.getPass())).serialize();
     }
 
     public void logout() {
