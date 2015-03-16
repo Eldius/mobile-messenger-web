@@ -8,6 +8,7 @@ import net.eldiosantos.messenger.model.Message;
 import net.eldiosantos.messenger.repository.MessageRepository;
 import net.eldiosantos.messenger.rule.RESTRequestRule;
 import net.eldiosantos.messenger.service.GetUserMessages;
+import net.eldiosantos.messenger.service.SaveMessage;
 import net.eldiosantos.messenger.vo.MessageVO;
 
 import javax.inject.Inject;
@@ -30,6 +31,9 @@ public class JSONMessageController {
     private GetUserMessages getUserMessages;
 
     @Inject
+    private SaveMessage saveMessage;
+
+    @Inject
     private Result result;
 
     @Get("/")
@@ -45,8 +49,6 @@ public class JSONMessageController {
     @Consumes("application/json")
     @Post("/send")
     public void send(final MessageVO vo) {
-        final Message msg = messageConverter.fromVo(vo);
-        messageRepository.persist(msg);
-        result.use(json()).from(messageConverter.toVo(msg)).serialize();
+        result.use(json()).from(saveMessage.save(vo)).serialize();
     }
 }
