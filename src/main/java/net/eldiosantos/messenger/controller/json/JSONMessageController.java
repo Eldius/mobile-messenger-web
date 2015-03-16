@@ -22,12 +22,6 @@ import javax.inject.Inject;
 public class JSONMessageController {
 
     @Inject
-    private MessageRepository messageRepository;
-
-    @Inject
-    private MessageConverter messageConverter;
-
-    @Inject
     private GetUserMessages getUserMessages;
 
     @Inject
@@ -38,12 +32,12 @@ public class JSONMessageController {
 
     @Get("/")
     public void list() {
-        result.use(json()).from(messageConverter.toVo(getUserMessages.list())).serialize();
+        result.use(json()).from(getUserMessages.list()).serialize();
     }
 
     @Get("/messages/{begin}")
     public void list(final Long begin) {
-        result.use(json()).from(messageConverter.toVo(getUserMessages.list(begin))).serialize();
+        result.use(json()).from(getUserMessages.list(begin)).serialize();
     }
 
     @Consumes("application/json")
