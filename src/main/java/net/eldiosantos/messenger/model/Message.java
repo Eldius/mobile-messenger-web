@@ -25,6 +25,8 @@ public class Message implements Serializable {
     @Lob
     private String message;
 
+    private Boolean wasRead = false;
+
     public Long getId() {
         return id;
     }
@@ -58,6 +60,15 @@ public class Message implements Serializable {
 
     public Message setMessage(String message) {
         this.message = message;
+        return this;
+    }
+
+    public Boolean getWasRead() {
+        return wasRead;
+    }
+
+    public Message setWasRead(Boolean wasRead) {
+        this.wasRead = wasRead;
         return this;
     }
 
