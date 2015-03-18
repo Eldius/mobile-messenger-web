@@ -26,4 +26,11 @@ public class MessageRepositoryHibernateImpl extends BaseRepository<Message, Long
                 .setParameter("toId", to.getId())
                 .getResultList();
     }
+
+    @Override
+    public List<Message> getUnreadMessages(UserInfo to) {
+        return (List<Message>)entityManager.createQuery("select m from Message m where m.wasRead = false and m.to.id = :toId")
+                .setParameter("toId", to.getId())
+                .getResultList();
+    }
 }

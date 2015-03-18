@@ -36,4 +36,16 @@ public class GetUserMessages {
         final UserInfo user = userInfoRepository.validateToken(userKeyExtractor.extract());
         return messageConverter.toVo(messageRepository.getFrom(user, fromMsgId));
     }
+
+    public List<MessageVO> listUnreadMessages() {
+        final UserInfo user = userInfoRepository.validateToken(userKeyExtractor.extract());
+
+        final List<Message> unreadMessages = messageRepository.getUnreadMessages(user);
+
+        for(Message msg:unreadMessages) {
+            messageRepository.update(msg.setWasRead(true));
+        }
+
+        return messageConverter.toVo(unreadMessages);
+    }
 }

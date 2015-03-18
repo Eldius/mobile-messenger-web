@@ -3,9 +3,7 @@ package net.eldiosantos.messenger.controller.json;
 import br.com.caelum.brutauth.auth.annotations.SimpleBrutauthRules;
 import br.com.caelum.vraptor.*;
 import static br.com.caelum.vraptor.view.Results.*;
-import net.eldiosantos.messenger.converter.MessageConverter;
-import net.eldiosantos.messenger.model.Message;
-import net.eldiosantos.messenger.repository.MessageRepository;
+
 import net.eldiosantos.messenger.rule.RESTRequestRule;
 import net.eldiosantos.messenger.service.GetUserMessages;
 import net.eldiosantos.messenger.service.SaveMessage;
@@ -38,6 +36,11 @@ public class JSONMessageController {
     @Get("/messages/{begin}")
     public void list(final Long begin) {
         result.use(json()).from(getUserMessages.list(begin)).serialize();
+    }
+
+    @Get("/unread")
+    public void listUnread() {
+        result.use(json()).from(getUserMessages.listUnreadMessages()).serialize();
     }
 
     @Consumes("application/json")

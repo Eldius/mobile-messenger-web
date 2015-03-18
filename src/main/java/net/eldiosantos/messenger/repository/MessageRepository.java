@@ -9,4 +9,7 @@ import java.util.List;
 public interface MessageRepository extends Repository<Message, Long> {
 
     List<Message>getFrom(UserInfo to, Long begin);
+
+    List<Message>getUnreadMessages(UserInfo to);
+
 }
