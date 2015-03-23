@@ -24,7 +24,7 @@
         <Arg>jdbc/datasource</Arg>
         <Arg>
             <New class="org.h2.jdbcx.JdbcDataSource">
-                <Set name="URL">jdbc:h2:./test</Set>
+                <Set name="URL">jdbc:h2:tcp://localhost:9094/./test</Set>
                 <Set name="user">user</Set>
                 <Set name="password">pass</Set>
             </New>
