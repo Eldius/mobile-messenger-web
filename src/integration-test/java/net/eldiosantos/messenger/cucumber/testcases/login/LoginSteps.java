@@ -40,6 +40,14 @@ public class LoginSteps {
         assertTrue("User session details is present?", userSession.isDisplayed());
 
         System.out.println("Closing web browser...");
-        driver.close();
+        driver.quit();
+    }
+
+    @Then("^I shall not pass$")
+    public void i_shall_not_pass() throws Throwable {
+        final WebElement loginForm = driver.findElement(By.className("form-horizontal"));
+        assertTrue("I couldn't log in", loginForm.isDisplayed());
+        System.out.println("Closing web browser...");
+        driver.quit();
     }
 }

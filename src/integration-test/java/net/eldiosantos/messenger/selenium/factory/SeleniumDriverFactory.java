@@ -1,7 +1,9 @@
 package net.eldiosantos.messenger.selenium.factory;
 
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import javax.inject.Singleton;
 import java.util.Arrays;
@@ -16,7 +18,7 @@ public class SeleniumDriverFactory {
         return Arrays.asList(new WebDriver[]{new FirefoxDriver()});
     }
 
-    public WebDriver getFirefox() {
+    public WebDriver getDriver() {
         return new FirefoxDriver();
     }
 }
