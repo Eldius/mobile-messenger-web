@@ -182,7 +182,7 @@
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
-            <artifactId>cucumber-weld</artifactId>
+            <artifactId>cucumber-picocontainer</artifactId>
             <version>1.2.2</version>
             <scope>test</scope>
         </dependency>

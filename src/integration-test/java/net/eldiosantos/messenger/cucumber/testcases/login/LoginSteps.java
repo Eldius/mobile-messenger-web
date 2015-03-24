@@ -1,10 +1,8 @@
-package net.eldiosantos.messenger.cucumber.testcase.login;
+package net.eldiosantos.messenger.cucumber.testcases.login;
 
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import junit.framework.AssertionFailedError;
-import net.eldiosantos.messenger.selenium.factory.SeleniumDriverFactory;
+import net.eldiosantos.messenger.selenium.factory.WebdriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,16 +14,10 @@ import static org.junit.Assert.*;
  */
 public class LoginSteps {
 
-    public static final String BASE_URL = "http://localhost:8080/mobile-messenger";
-    private final WebDriver driver = new SeleniumDriverFactory().getFirefox();
+    private final WebDriver driver;
 
-    public LoginSteps() {
-    }
-
-    @Given("^I open the home page$")
-    public void i_open_the_home_page() throws Throwable {
-        System.out.println("Opening system home page...");
-        driver.get(BASE_URL);
+    public LoginSteps(final WebdriverHelper helper) {
+        this.driver = helper.driver;
     }
 
     @When("^I try to login as '(.+)' with '(.+)' as my password$")
