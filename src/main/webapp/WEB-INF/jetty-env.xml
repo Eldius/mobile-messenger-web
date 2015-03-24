@@ -24,7 +24,7 @@
         <Arg>jdbc/datasource</Arg>
         <Arg>
             <New class="org.h2.jdbcx.JdbcDataSource">
-                <Set name="URL">jdbc:h2:./target/test.db</Set>
+                <Set name="URL">jdbc:h2:./target/running.db</Set>
                 <Set name="user">user</Set>
                 <Set name="password">pass</Set>
             </New>
