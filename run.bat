@@ -1,6 +1,6 @@
 cls
 
-call mvn clean install
+call mvn clean install -DskipTests=true
 if NOT "%ERROR_CODE%" == "0" GOTO ERROR
 
 set "MAVEN_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"

@@ -1,7 +1,7 @@
 cls
 
 set "MAVEN_OPTS="
-call mvn clean package
+call mvn clean install -Ptest-progile
 if NOT "%ERROR_CODE%" == "0" GOTO ERROR
 GOTO FINISH
 
