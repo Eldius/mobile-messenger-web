@@ -433,7 +433,7 @@
     </reporting>
     <profiles>
         <profile>
-            <id>test-progile</id>
+            <id>test-profile</id>
             <build>
                 <finalName>${project.artifactId}</finalName>
                 <plugins>
@@ -445,7 +445,7 @@
                             <webApp>
                                 <contextPath>/${project.build.finalName}</contextPath>
                             </webApp>
-                            <jettyXml>${basedir}/src/integration-test/resources/jetty-env.xml</jettyXml>
+                            <jettyXml>${basedir}/src/main/webapp/WEB-INF/jetty-env.xml</jettyXml>
                             <contextXml>${basedir}/src/main/webapp/WEB-INF/jetty-context.xml</contextXml>
                             <stopPort>6969</stopPort>
                             <stopKey>klaatu barada nikto</stopKey>
@@ -631,65 +631,6 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.edugility</groupId>
-                        <artifactId>h2-maven-plugin</artifactId>
-                        <version>1.0</version>
-                        <configuration>
-                            <port>9094</port>
-                            <baseDirectory>${project.build.directory}</baseDirectory>
-                            <allowOthers>true</allowOthers>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>Spawn a new H2 TCP server</id>
-                                <phase>generate-test-sources</phase>
-                                <goals>
-                                    <goal>spawn</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>Stop a spawned H2 TCP server</id>
-                                <goals>
-                                    <goal>stop</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>sql-maven-plugin</artifactId>
-                        <configuration>
-                            <driver>org.h2.Driver</driver>
-                            <url>jdbc:h2:tcp://localhost:9094/./test</url>
-                            <username>user</username>
-                            <password>pass</password>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>create-db</id>
-                                <phase>generate-test-sources</phase>
-                                <goals>
-                                    <goal>execute</goal>
-                                </goals>
-                                <configuration>
-                                    <!-- no transaction -->
-                                    <autocommit>true</autocommit>
-                                    <srcFiles>
-                                        <srcFile>src/integration-test/resources/scripts/prepareDatabase.sql</srcFile>
-                                    </srcFiles>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.h2database</groupId>
-                                <artifactId>h2</artifactId>
-                                <version>1.4.182</version>
-                            </dependency>
-                        </dependencies>
                     </plugin>
                 </plugins>
             </build>

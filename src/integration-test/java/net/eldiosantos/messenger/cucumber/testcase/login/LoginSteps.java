@@ -3,6 +3,7 @@ package net.eldiosantos.messenger.cucumber.testcase.login;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import junit.framework.AssertionFailedError;
 import net.eldiosantos.messenger.selenium.factory.SeleniumDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,6 +47,7 @@ public class LoginSteps {
 
         assertTrue("User session details is present?", userSession.isDisplayed());
 
+        System.out.println("Closing web browser...");
         driver.close();
     }
 }
