@@ -2,10 +2,12 @@ package net.eldiosantos.messenger.cucumber.testcases.config;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.eldiosantos.messenger.selenium.factory.WebdriverHelper;
+import net.eldiosantos.messenger.selenium.helper.WebdriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.*;
 
@@ -21,7 +23,9 @@ public class ConfigSteps {
 
     @When("^open the admin console$")
     public void open_the_admin_console() throws Throwable {
-        driver.findElement(By.className("admin")).click();
+        WebElement adminMenuItem = (new WebDriverWait(driver, 20))
+                .until(ExpectedConditions.presenceOfElementLocated(By.linkText("Admin")));
+        adminMenuItem.click();
     }
 
     @When("^select the open user registration option$")
@@ -34,7 +38,6 @@ public class ConfigSteps {
 
     @When("^click on save config button$")
     public void click_on_save_button() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         driver.findElement(By.id("save")).click();
     }
 

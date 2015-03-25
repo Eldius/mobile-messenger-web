@@ -2,8 +2,7 @@ package net.eldiosantos.messenger.cucumber.testcases.home;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import net.eldiosantos.messenger.selenium.factory.SeleniumDriverFactory;
-import net.eldiosantos.messenger.selenium.factory.WebdriverHelper;
+import net.eldiosantos.messenger.selenium.helper.WebdriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

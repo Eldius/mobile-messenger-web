@@ -2,7 +2,7 @@ package net.eldiosantos.messenger.cucumber.testcases.login;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.eldiosantos.messenger.selenium.factory.WebdriverHelper;
+import net.eldiosantos.messenger.selenium.helper.WebdriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +22,7 @@ public class LoginSteps {
 
     @When("^I try to login as '(.+)' with '(.+)' as my password$")
     public void i_try_to_login_as_admin_with_as_my_password(final String user, final String pass) throws Throwable {
+        Thread.sleep(5000);
         System.out.println("######################################################");
         System.out.println(String.format("first method:\n * user: %s\n * pass: %s\n", user, pass));
         driver.findElement(By.cssSelector("input[name='login']")).sendKeys(user);

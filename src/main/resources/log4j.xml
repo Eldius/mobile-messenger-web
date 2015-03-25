@@ -27,6 +27,10 @@
         </layout>
     </appender>
 
+    <category name="org.openqa">
+        <priority value="info" />
+    </category>
+
     <category name="org.hibernate.sql">
         <priority value="trace" />
         <appender-ref ref="hibernate" />
