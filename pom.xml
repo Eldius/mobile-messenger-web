@@ -445,14 +445,6 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.7.2.201409121644</version>
             </plugin>
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>cucumber-reporting</artifactId>
-                <version>0.0.24</version>
-                <configuration>
-
-                </configuration>
-            </plugin>
         </plugins>
     </reporting>
     <profiles>
