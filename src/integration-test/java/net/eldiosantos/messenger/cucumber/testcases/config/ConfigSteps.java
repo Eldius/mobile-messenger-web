@@ -2,7 +2,7 @@ package net.eldiosantos.messenger.cucumber.testcases.config;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.eldiosantos.messenger.selenium.helper.WebdriverHelper;
+import net.eldiosantos.messenger.selenium.helper.IntegrationTestHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 public class ConfigSteps {
     private final WebDriver driver;
 
-    public ConfigSteps(final WebdriverHelper helper) {
+    public ConfigSteps(final IntegrationTestHelper helper) {
         driver = helper.driver;
     }
 
@@ -30,10 +30,7 @@ public class ConfigSteps {
 
     @When("^select the open user registration option$")
     public void select_the_open_user_registration_option() throws Throwable {
-        final WebElement check = driver.findElement(By.id("openReg"));
-        if(!check.isSelected()) {
-            check.click();
-        }
+        setOpenRegisteringChecked(true);
     }
 
     @When("^click on save config button$")
@@ -51,6 +48,27 @@ public class ConfigSteps {
     public void i_can_see_the_sign_up_button() throws Throwable {
         final WebElement signup = driver.findElement(By.id("signupButton"));
         assertTrue("Sign up button is visible", signup.isDisplayed());
-        driver.quit();
+    }
+
+    @When("^unselect the open user registration option$")
+    public void unselect_the_open_user_registration_option() throws Throwable {
+        setOpenRegisteringChecked(false);
+    }
+
+    private void setOpenRegisteringChecked(final Boolean check) {
+        final WebElement checkElement = driver.findElement(By.id("openReg"));
+        if(!check.equals(checkElement.isSelected())) {
+            checkElement.click();
+        }
+    }
+
+    @Then("^I can't see the sign up button$")
+    public void I_can_t_see_the_sign_up_button() throws Throwable {
+        try {
+            driver.findElement(By.id("signupButton"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue("I can't find the button", e.getClass().equals(org.openqa.selenium.NoSuchElementException.class));
+        }
     }
 }

@@ -44,6 +44,7 @@ public class SeleniumDriverFactory {
                 final File destFile = new File("./target/pictures/" + System.currentTimeMillis() + ".png");
                 FileUtils.touch(destFile);
                 destFile.delete();
+                FileUtils.copyFile(scrFile, destFile);
             } catch (Exception e) {
                 System.out.println("Ok, I couldn't take the screenshot... I'm sorry...");
             }

@@ -2,7 +2,7 @@ package net.eldiosantos.messenger.cucumber.testcases.login;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.eldiosantos.messenger.selenium.helper.WebdriverHelper;
+import net.eldiosantos.messenger.selenium.helper.IntegrationTestHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +16,7 @@ public class LoginSteps {
 
     private final WebDriver driver;
 
-    public LoginSteps(final WebdriverHelper helper) {
+    public LoginSteps(final IntegrationTestHelper helper) {
         this.driver = helper.driver;
     }
 
@@ -39,16 +39,25 @@ public class LoginSteps {
         final WebElement userSession = driver.findElement(By.id("userSession"));
 
         assertTrue("User session details is present?", userSession.isDisplayed());
-
-        System.out.println("Closing web browser...");
-        driver.quit();
     }
 
     @Then("^I shall not pass$")
     public void i_shall_not_pass() throws Throwable {
         final WebElement loginForm = driver.findElement(By.className("form-horizontal"));
         assertTrue("I couldn't log in", loginForm.isDisplayed());
-        System.out.println("Closing web browser...");
-        driver.quit();
+    }
+
+    @When("^I click on the login menu$")
+    public void i_click_on_the_login_menu() throws Throwable {
+        driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/ul/li[2]/a")).click();
+    }
+
+    @Then("^I can see the login form$")
+    public void i_can_see_the_login_form() throws Throwable {
+        final WebElement loginForm = driver.findElement(By.className("form-horizontal"));
+        final WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"send\"]"));
+
+        assertTrue("The login form is visible?", loginForm.isDisplayed());
+        assertTrue("The login button is visible?", loginButton.isDisplayed());
     }
 }

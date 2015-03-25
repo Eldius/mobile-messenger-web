@@ -2,7 +2,7 @@ package net.eldiosantos.messenger.cucumber.testcases.home;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import net.eldiosantos.messenger.selenium.helper.WebdriverHelper;
+import net.eldiosantos.messenger.selenium.helper.IntegrationTestHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,7 +17,7 @@ public class HomePageSteps {
 
     private final WebDriver driver;
 
-    public HomePageSteps(final WebdriverHelper helper) {
+    public HomePageSteps(final IntegrationTestHelper helper) {
         this.driver = helper.driver;
     }
 
@@ -31,11 +31,6 @@ public class HomePageSteps {
     public void i_can_see_the_login_fields() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         final Boolean isVisible = driver.findElement(By.id("loginForm")).isDisplayed();
-        driver.quit();
         assertTrue("Are the login fields visible?", isVisible);
-    }
-
-    public WebDriver getDriver() {
-        return driver;
     }
 }
