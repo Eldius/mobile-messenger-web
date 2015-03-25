@@ -45,13 +45,13 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav menu">
-					<li class="home"><a href="<c:url value="/" />"><fmt:message key="app.menu.home" /></a></li>
+					<li class="home"><a id="home_menu_item" href="<c:url value="/" />"><fmt:message key="app.menu.home" /></a></li>
 					<c:if test="${empty userSession.login}">
-					    <li class="login"><a href="${linkTo[LoginController].form() }"><fmt:message key="app.menu.login" /></a></li>
+					    <li class="login"><a id="login_menu_item" href="${linkTo[LoginController].form() }"><fmt:message key="app.menu.login" /></a></li>
 					</c:if>
 					<c:if test="${not empty userSession.login && rules[AdminUserRule].isAllowed(0)}">
-					    <li class="users"><a href="${linkTo[UserController].index() }"><fmt:message key="app.menu.user" /></a></li>
-                    	<li class="admin"><a href="${linkTo[AdminController].index() }"><fmt:message key="app.menu.admin" /></a></li>
+					    <li class="users"><a id="user_menu_item" href="${linkTo[UserController].index() }"><fmt:message key="app.menu.user" /></a></li>
+                    	<li class="admin"><a id="admin_menu_item" href="${linkTo[AdminController].index() }"><fmt:message key="app.menu.admin" /></a></li>
                     </c:if>
 				</ul>
 				<tag:loginPanel />

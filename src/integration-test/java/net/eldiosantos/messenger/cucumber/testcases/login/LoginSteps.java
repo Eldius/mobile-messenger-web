@@ -25,9 +25,9 @@ public class LoginSteps {
         Thread.sleep(5000);
         System.out.println("######################################################");
         System.out.println(String.format("first method:\n * user: %s\n * pass: %s\n", user, pass));
-        driver.findElement(By.cssSelector("input[name='login']")).sendKeys(user);
-        driver.findElement(By.cssSelector("input[name='pass']")).sendKeys(pass);
-        driver.findElement(By.cssSelector("#send")).click();
+        driver.findElement(By.id("menubar_login_field")).sendKeys(user);
+        driver.findElement(By.id("menubar_pass_field")).sendKeys(pass);
+        driver.findElement(By.id("login_button")).click();
     }
 
     @Then("^I can see the logged user menu on the right$")
@@ -43,7 +43,7 @@ public class LoginSteps {
 
     @Then("^I shall not pass$")
     public void i_shall_not_pass() throws Throwable {
-        final WebElement loginForm = driver.findElement(By.className("form-horizontal"));
+        final WebElement loginForm = driver.findElement(By.id("loginForm"));
         assertTrue("I couldn't log in", loginForm.isDisplayed());
     }
 

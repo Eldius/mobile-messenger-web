@@ -23,8 +23,7 @@ public class ConfigSteps {
 
     @When("^open the admin console$")
     public void open_the_admin_console() throws Throwable {
-        WebElement adminMenuItem = (new WebDriverWait(driver, 20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.linkText("Admin")));
+        WebElement adminMenuItem = driver.findElement(By.id("admin_menu_item"));
         adminMenuItem.click();
     }
 

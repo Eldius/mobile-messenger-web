@@ -13,8 +13,8 @@ public class IntegrationTestHelper {
     public WebDriver driver = null;
     public Scenario scenario = null;
 
-    public IntegrationTestHelper() {
-        driver = new SeleniumDriverFactory().getDriver();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+    public IntegrationTestHelper(final SeleniumDriverFactory factory) {
+        this.driver = factory.getDriver();
+        factory.setHelper(this);
     }
 }

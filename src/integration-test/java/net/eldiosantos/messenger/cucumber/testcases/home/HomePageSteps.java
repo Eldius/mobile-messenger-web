@@ -29,7 +29,6 @@ public class HomePageSteps {
 
     @Then("^I can see the login fields$")
     public void i_can_see_the_login_fields() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         final Boolean isVisible = driver.findElement(By.id("loginForm")).isDisplayed();
         assertTrue("Are the login fields visible?", isVisible);
     }

@@ -1,6 +1,7 @@
 package net.eldiosantos.messenger.selenium.factory;
 
 
+import net.eldiosantos.messenger.selenium.helper.IntegrationTestHelper;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -21,8 +22,14 @@ import java.util.List;
  */
 public class SeleniumDriverFactory {
 
-    public List<WebDriver>getDriverList() {
-        return Arrays.asList(new WebDriver[]{new FirefoxDriver()});
+    private IntegrationTestHelper helper;
+
+    public IntegrationTestHelper getHelper() {
+        return helper;
+    }
+
+    public void setHelper(IntegrationTestHelper helper) {
+        this.helper = helper;
     }
 
     public WebDriver getDriver() {
@@ -32,23 +39,23 @@ public class SeleniumDriverFactory {
 
     private WebDriver getScreenshotDriver(final WebDriver driver) {
         final EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
-        eventFiringWebDriver.register(new CustomWebdriverEventListener());
-        return eventFiringWebDriver;
-    }
+        eventFiringWebDriver.register(new AbstractWebDriverEventListener() {
 
-    private static class CustomWebdriverEventListener extends AbstractWebDriverEventListener {
-        @Override
-        public void onException(Throwable throwable, WebDriver driver) {
-            try {
-                File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                final File destFile = new File("./target/pictures/" + System.currentTimeMillis() + ".png");
-                FileUtils.touch(destFile);
-                destFile.delete();
-                FileUtils.copyFile(scrFile, destFile);
-            } catch (Exception e) {
-                System.out.println("Ok, I couldn't take the screenshot... I'm sorry...");
+            @Override
+            public void onException(Throwable throwable, WebDriver driver) {
+                try {
+                    File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                    final String imageFileName = SeleniumDriverFactory.this.getHelper().scenario.getName().replaceAll(" ", "_");
+                    final File destFile = new File("./target/pictures/" + imageFileName + ".png");
+                    FileUtils.touch(destFile);
+                    destFile.delete();
+                    FileUtils.copyFile(scrFile, destFile);
+                } catch (Exception e) {
+                    System.out.println("Ok, I couldn't take the screenshot... I'm sorry...");
+                }
+                super.onException(throwable, driver);
             }
-            super.onException(throwable, driver);
-        }
+        });
+        return eventFiringWebDriver;
     }
 }

@@ -8,12 +8,12 @@
 
         <form class="navbar-form navbar-right" role="form" id="loginForm" action="${linkTo[LoginController].login()}" method="post" >
             <div class="form-group">
-                <input type="text" name="login" placeholder="Email" class="form-control">
+                <input type="text" name="login" id="menubar_login_field" placeholder="Email" class="form-control">
             </div>
             <div class="form-group">
-                <input type="password" name="pass" placeholder="Password" class="form-control">
+                <input type="password" name="pass" id="menubar_pass_field" placeholder="Password" class="form-control">
             </div>
-            <button id="send" type="submit" class="btn btn-success">Sign in</button>
+            <button id="login_button" type="submit" class="btn btn-success">Sign in</button>
             <c:if test="${not empty serverConfigGetter.openRegistrationProperty && serverConfigGetter.openRegistrationProperty.booleanValue}">
                 <a id="signupButton" class="btn btn-info" href="${linkTo[UserController].form()}">Sign up</a>
             </c:if>
@@ -29,10 +29,10 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="${linkTo[UserController].form(userSession.user)}">Perfil</a>
+                        <a id="userSession_profile_subitem" href="${linkTo[UserController].form(userSession.user)}">Perfil</a>
                     </li>
                     <li>
-                        <a href="${linkTo[LoginController].logout()}">Sair</a>
+                        <a id="userSession_logout_subitem" href="${linkTo[LoginController].logout()}">Sair</a>
                     </li>
                 </ul>
             </li>

@@ -58,15 +58,15 @@ public class UsefulSteps {
                 .append("Finished scenario: ")
                 .append(scenario.getName()).append("\n")
                 .append("Scenario status: ")
-                .append(scenario.getStatus());
+                .append(scenario.getStatus()).append("\n");
 
         if(scenario.isFailed()) {
             try {
-                msg.append("Scenario failed, cleaning the messe...");
+                msg.append("Scenario failed, cleaning the messe...\n");
                 helper.driver.close();
                 helper.driver.quit();
             } catch (Exception e) {
-                logger.warn("Error trying to close the browser", e);
+                logger.warn("Error trying to close the browser\n", e);
             }
         }
 
