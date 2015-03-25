@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
                 "classpath:net/eldiosantos/messenger/cucumber/testcases/homepage/homepage.feature"
                 , "classpath:net/eldiosantos/messenger/cucumber/testcases/login/login.feature"
                 , "classpath:net/eldiosantos/messenger/cucumber/testcases/config/config.feature"
+                , "classpath:net/eldiosantos/messenger/cucumber/testcases/user/user.feature"
         }
         , format = {"pretty", "json:target/cucumber/results.json"}
         , glue = {"net.eldiosantos.messenger.cucumber.testcases"}

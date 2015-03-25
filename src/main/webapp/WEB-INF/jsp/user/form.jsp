@@ -12,7 +12,7 @@
                 value="<c:out value="${user.id}" />"
 
             <tag:textFormAttribute
-                id="login"
+                id="user_field_login"
                 name="user.login"
                 labelKey="user.form.login.label"
                 placeholder="Login"
@@ -20,14 +20,14 @@
                 required="true" />
 
             <tag:passwordFormAttribute
-                id="pass"
+                id="user_field_pass"
                 name="user.password"
                 labelKey="user.form.pass.label"
                 placeholder="Password"
                 required="true" />
 
             <tag:textFormAttribute
-                id="email"
+                id="user_field_email"
                 name="user.email"
                 labelKey="user.form.email.label"
                 placeholder="Email"
@@ -37,8 +37,8 @@
             <div class="row">
                 &nbsp;
             </div>
-            <button type="submit" class="btn btn-success">Salvar</button>
-            <button type="reset" class="btn btn-danger" id="cancel">Cancelar</button>
+            <button type="submit" id="user_form_save" class="btn btn-success">Salvar</button>
+            <button type="reset" id="user_form_cancel" class="btn btn-danger" id="cancel">Cancelar</button>
         </fieldset>
     </form>
 
