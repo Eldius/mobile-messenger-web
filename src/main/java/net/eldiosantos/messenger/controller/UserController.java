@@ -66,7 +66,7 @@ public class UserController {
             result.redirectTo(this).form();
         } else {
             user.setPassword(hashProvider.hash(user.getPassword()));
-            userInfoRepository.persist(user);
+            userInfoRepository.update(user);
             result.redirectTo(this).form(user);
         }
     }

@@ -8,8 +8,8 @@
 
             <input
                 type="hidden"
-                name="userInfo.id"
-                value="<c:out value="${user.id}" />"
+                name="user.id"
+                value="<c:out value="${userInfo.id}" />" />
 
             <tag:textFormAttribute
                 id="user_field_login"

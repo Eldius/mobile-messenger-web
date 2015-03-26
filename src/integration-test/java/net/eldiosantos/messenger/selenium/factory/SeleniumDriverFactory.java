@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by eldio.junior on 23/03/2015.
@@ -34,6 +35,7 @@ public class SeleniumDriverFactory {
 
     public WebDriver getDriver() {
         final WebDriver driver = getScreenshotDriver(new FirefoxDriver());
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         return driver;
     }
 

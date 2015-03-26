@@ -16,7 +16,7 @@ Feature: User management
     And I take a snapshot and save on the file 'open_user_registration.png'
     And I close the browser
 
-  Scenario: Create a new user and test profile adition
+  Scenario: Create a new user and test profile edition
     Given I open the home page
     When I try to login as 'admin' with '123' as my password
     And open the admin console
