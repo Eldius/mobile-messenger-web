@@ -1,3 +1,3 @@
 #!/bin/bash
-call mvn clean install -Ptest-profile
+mvn clean install -Ptest-profile
 
