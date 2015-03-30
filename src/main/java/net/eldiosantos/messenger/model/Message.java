@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by eldio.junior on 06/03/2015.
@@ -24,6 +25,8 @@ public class Message implements Serializable {
 
     @Lob
     private String message;
+
+    private Date sentDate;
 
     private Boolean wasRead = false;
 
@@ -70,6 +73,19 @@ public class Message implements Serializable {
     public Message setWasRead(Boolean wasRead) {
         this.wasRead = wasRead;
         return this;
+    }
+
+    public Date getSentDate() {
+        return sentDate;
+    }
+
+    public Message setSentDate(Date sentDate) {
+        this.sentDate = sentDate;
+        return this;
+    }
+
+    public Boolean isWasRead() {
+        return wasRead;
     }
 
     @Override

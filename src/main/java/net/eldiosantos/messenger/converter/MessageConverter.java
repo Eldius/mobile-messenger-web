@@ -7,6 +7,7 @@ import net.eldiosantos.messenger.vo.MessageVO;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,7 +34,8 @@ public class MessageConverter {
         final Message msg = new Message()
                 .setFrom(userInfoRepository.validateToken(userKeyExtractor.extract()))
                 .setTo(userInfoRepository.getByPk(vo.getTo()))
-                .setMessage(vo.getMessage());
+                .setMessage(vo.getMessage())
+                .setSentDate(new Date());
         return msg;
     }
 
